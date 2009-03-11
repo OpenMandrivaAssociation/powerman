@@ -2,17 +2,14 @@
 %define libname	%mklibname powerman  %{major}
 %define develname %mklibname -d powerman
 
-%define snap r1109
-
 Summary:	Power to the Cluster
 Name:		powerman
-Version:	2.3.3
-Release:	%mkrel 0.%{snap}.1
+Version:	2.3.4
+Release:	%mkrel 1
 Group:		System/Servers
 License:	GPLv2+
 URL:		http://sourceforge.net/projects/powerman
-#Source0:	http://dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
-Source0:	powerman-2.3.3-r1109.tar.gz
+Source0:	http://dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
 Requires(post): rpm-helper
 Requires(preun): rpm-helper
 Requires(pre): rpm-helper
@@ -65,8 +62,8 @@ sh ./autogen.sh
     --with-httppower \
     --with-genders \
     --with-ncurses \
-    -with-user=powerman
-      
+    --with-user=powerman
+
 # parallel makes often fail
 make -e VERSION=%{version} EXTRA_CFLAGS="$CFLAGS"
 
@@ -141,4 +138,3 @@ rm -rf %{buildroot}
 %{_libdir}/*.a
 %{_libdir}/*.la
 %{_libdir}/pkgconfig/*.pc
-
