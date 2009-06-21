@@ -4,7 +4,7 @@
 
 Summary:	Power to the Cluster
 Name:		powerman
-Version:	2.3.4
+Version:	2.3.5
 Release:	%mkrel 1
 Group:		System/Servers
 License:	GPLv2+
@@ -87,6 +87,9 @@ mv %{buildroot}%{_sysconfdir}/init.d/%{name} %{buildroot}%{_initrddir}/
 
 # Don't turn on by default
 %{__perl} -pi -e 's|chkconfig:.*95 5|chkconfig: - 95 5|g' %{buildroot}%{_initrddir}/%{name}
+
+# don't package this for now
+rm -rf %{buildroot}%{_libdir}/stonith
 
 %pre
 %_pre_useradd powerman /var/empty /bin/sh
