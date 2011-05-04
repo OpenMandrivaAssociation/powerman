@@ -5,7 +5,7 @@
 Summary:	Power to the Cluster
 Name:		powerman
 Version:	2.3.5
-Release:	%mkrel 3
+Release:	%mkrel 4
 Group:		System/Servers
 License:	GPLv2+
 URL:		http://sourceforge.net/projects/powerman
