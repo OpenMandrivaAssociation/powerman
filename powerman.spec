@@ -4,12 +4,12 @@
 
 Summary:	Power to the Cluster
 Name:		powerman
-Version:	2.3.5
-Release:	%mkrel 4
+Version:	2.3.9
+Release:	%mkrel 1
 Group:		System/Servers
 License:	GPLv2+
-URL:		http://sourceforge.net/projects/powerman
-Source0:	http://dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
+URL:		http://code.google.com/p/powerman/
+Source0:	http://powerman.googlecode.com/files/powerman-%{version}.tar.gz
 Requires(post): rpm-helper
 Requires(preun): rpm-helper
 Requires(pre): rpm-helper
@@ -19,6 +19,7 @@ BuildRequires:	flex
 BuildRequires:	genders-devel
 BuildRequires:	libcurl-devel
 BuildRequires:	ncurses-devel
+BuildRequires:	net-snmp-devel
 BuildRequires:	readline-devel
 BuildRequires:	tcp_wrappers-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -56,9 +57,11 @@ This package contains the static genders library and its header files.
 %setup -q
 
 %build
-sh ./autogen.sh
+#sh ./autogen.sh
 %serverbuild
+
 %configure2_5x \
+    --with-snmppower \
     --with-httppower \
     --with-genders \
     --with-ncurses \
@@ -118,11 +121,12 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %doc ChangeLog DISCLAIMER COPYING NEWS TODO
 %{_initrddir}/%{name}
-%{_bindir}/powerman
 %{_bindir}/pm
+%{_bindir}/powerman
+%{_sbindir}/httppower
 %{_sbindir}/plmpower
 %{_sbindir}/powermand
-%{_sbindir}/httppower
+%{_sbindir}/snmppower
 %{_sbindir}/vpcd
 %dir %{_sysconfdir}/%{name}/
 %config(noreplace) %{_sysconfdir}/%{name}/*
@@ -138,6 +142,5 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/*.a
-%{_libdir}/*.la
+%{_libdir}/*.*a
 %{_libdir}/pkgconfig/*.pc
