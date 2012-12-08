@@ -5,7 +5,7 @@
 Summary:	Power to the Cluster
 Name:		powerman
 Version:	2.3.9
-Release:	%mkrel 2
+Release:	%mkrel 3
 Group:		System/Servers
 License:	GPLv2+
 URL:		http://code.google.com/p/powerman/
@@ -144,3 +144,37 @@ rm -rf %{buildroot}
 %{_libdir}/*.so
 %{_libdir}/*.*a
 %{_libdir}/pkgconfig/*.pc
+
+
+%changelog
+* Mon Jun 06 2011 Oden Eriksson <oeriksson@mandriva.com> 2.3.9-1mdv2011.0
++ Revision: 682908
+- 2.3.9
+
+* Thu May 05 2011 Oden Eriksson <oeriksson@mandriva.com> 2.3.5-4
++ Revision: 667811
+- mass rebuild
+
+* Fri Dec 03 2010 Oden Eriksson <oeriksson@mandriva.com> 2.3.5-3mdv2011.0
++ Revision: 607197
+- rebuild
+
+* Sun Mar 14 2010 Oden Eriksson <oeriksson@mandriva.com> 2.3.5-2mdv2010.1
++ Revision: 519057
+- rebuild
+
+* Sun Jun 21 2009 Oden Eriksson <oeriksson@mandriva.com> 2.3.5-1mdv2010.0
++ Revision: 387850
+- 2.3.5
+
+* Wed Mar 11 2009 Oden Eriksson <oeriksson@mandriva.com> 2.3.4-1mdv2009.1
++ Revision: 353769
+- 2.3.4
+
+* Thu Jan 29 2009 Oden Eriksson <oeriksson@mandriva.com> 2.3.3-0.r1109.1mdv2009.1
++ Revision: 335063
+- import powerman
+
+
+* Thu Jan 29 2009 Oden Eriksson <oeriksson@mandriva.com> 2.3.3-0.r1109.1mdv2009.1
+- initial Mandriva package
