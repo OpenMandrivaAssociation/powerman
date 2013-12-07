@@ -5,7 +5,7 @@
 Summary:	Power to the Cluster
 Name:		powerman
 Version:	2.3.9
-Release:	5
+Release:	6
 Group:		System/Servers
 License:	GPLv2+
 Url:		http://code.google.com/p/powerman/
