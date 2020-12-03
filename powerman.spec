@@ -4,12 +4,14 @@
 
 Summary:	Power to the Cluster
 Name:		powerman
-Version:	2.3.9
-Release:	12
+Version:	2.3.26
+Release:	1
 Group:		System/Servers
 License:	GPLv2+
 Url:		http://code.google.com/p/powerman/
-Source0:	http://powerman.googlecode.com/files/powerman-%{version}.tar.gz
+Source0:	https://github.com/chaos/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
+Patch0:		powerman-2.3.26-var_run-to-run.patch
+
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	genders-devel
@@ -18,7 +20,9 @@ BuildRequires:	readline-devel
 BuildRequires:	tcp_wrappers-devel
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(ncurses)
+BuildRequires:  pkgcinfig(systemd
 Requires(post,preun,pre,postun): rpm-helper
+Requires(post):	systemd
 
 %description
 PowerMan is a tool for manipulating remote power control (RPC) devices from a 
@@ -48,35 +52,24 @@ This package contains the development genders library and its header files.
 
 %build
 %serverbuild
-%configure2_5x \
+%configure \
 	--disable-static \
 	--with-snmppower \
 	--with-httppower \
 	--with-genders \
 	--with-ncurses \
-	--with-user=powerman
+	--with-user=powerman \
+	--with-systemdsystemunitdir=%{_unitdir}
 
-# parallel makes often fail
-make -e VERSION=%{version} EXTRA_CFLAGS="$CFLAGS"
+%make_build
 
 %install
-install -d %{buildroot}%{_initrddir}
+%make_install
 
-%makeinstall_std mandir=%{_mandir}
-
-# work around a problem in the install make file target
-rm %{buildroot}%{_bindir}/pm
-pushd %{buildroot}%{_bindir}
-    ln -s powerman pm
-popd
+find %{buildroot} -name "*.la" -delete
 
 # get rid of execute bit on powerman script files to fix rpmlint errror
 chmod -x %{buildroot}%{_sysconfdir}/%{name}/*
-
-mv %{buildroot}%{_sysconfdir}/init.d/%{name} %{buildroot}%{_initrddir}/
-
-# Don't turn on by default
-perl -pi -e 's|chkconfig:.*95 5|chkconfig: - 95 5|g' %{buildroot}%{_initrddir}/%{name}
 
 # don't package this for now
 rm -rf %{buildroot}%{_libdir}/stonith
@@ -88,6 +81,7 @@ rm -rf %{buildroot}%{_libdir}/stonith
 %_postun_userdel powerman
 
 %post
+%_tmpfilescreate %{name}
 %_post_service powerman
 
 %preun
