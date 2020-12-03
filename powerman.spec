@@ -20,7 +20,7 @@ BuildRequires:	readline-devel
 BuildRequires:	tcp_wrappers-devel
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(ncurses)
-BuildRequires:  pkgcinfig(systemd)
+BuildRequires:  pkgconfig(systemd)
 Requires(post,preun,pre,postun): rpm-helper
 Requires(post):	systemd
 
