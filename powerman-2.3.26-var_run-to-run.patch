@@ -1,0 +1,24 @@
+diff -Nrup a/scripts/powerman.service b/scripts/powerman.service
+--- a/scripts/powerman.service	2018-12-29 00:03:25.000000000 +0100
++++ b/scripts/powerman.service	2020-03-06 09:54:54.014138862 +0100
+@@ -8,7 +8,7 @@ PrivateTmp=yes
+ User=daemon
+ Group=daemon
+ ExecStart=/usr/sbin/powermand
+-PIDFile=/var/run/powerman/powermand.pid
++PIDFile=/run/powerman/powermand.pid
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff -Nrup a/scripts/tmpfiles.d/powerman.conf b/scripts/tmpfiles.d/powerman.conf
+--- a/scripts/tmpfiles.d/powerman.conf	2020-02-18 22:15:41.000000000 +0100
++++ b/scripts/tmpfiles.d/powerman.conf	2020-03-06 09:59:28.149784368 +0100
+@@ -1 +1 @@
+-d /usr/local/var/run/powerman   755 daemon daemon
++d /run/powerman   0755 powerman powerman
+diff -Nrup a/scripts/tmpfiles.d/powerman.conf.in b/scripts/tmpfiles.d/powerman.conf.in
+--- a/scripts/tmpfiles.d/powerman.conf.in	2018-12-29 00:03:25.000000000 +0100
++++ b/scripts/tmpfiles.d/powerman.conf.in	2020-03-06 09:59:16.431671245 +0100
+@@ -1 +1 @@
+-d @X_LOCALSTATEDIR@/run/powerman   755 daemon daemon
++d /run/powerman   0755 powerman powerman
