@@ -12,6 +12,7 @@ Url:		http://code.google.com/p/powerman/
 Source0:	https://github.com/chaos/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 Patch0:		powerman-2.3.26-var_run-to-run.patch
 
+BuildRequires:  intltool 
 BuildRequires:	gettext
 BuildRequires:	autoconf
 BuildRequires:	pkgconfig
@@ -57,7 +58,7 @@ This package contains the development genders library and its header files.
 %setup -q
 
 %build
-autoreconf -i
+autoreconf -fi
 %configure \
 	--disable-static \
 	--with-snmppower \
