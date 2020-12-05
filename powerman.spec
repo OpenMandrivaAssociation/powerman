@@ -51,6 +51,7 @@ This package contains the development genders library and its header files.
 %setup -q
 
 %build
+autoreconf -i
 %configure \
 	--disable-static \
 	--with-snmppower \
