@@ -16,7 +16,7 @@ BuildRequires:  git
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	genders-devel
-BuildRequires:	net-snmp-devel
+BuildRequires:	net-snmp
 BuildRequires:	readline-devel
 BuildRequires:	tcp_wrappers-devel
 BuildRequires:	pkgconfig(libcurl)
