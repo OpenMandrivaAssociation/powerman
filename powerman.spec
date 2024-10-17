@@ -8,7 +8,7 @@ Version:	2.3.26
 Release:	2
 Group:		System/Servers
 License:	GPLv2+
-Url:		http://code.google.com/p/powerman/
+Url:		https://code.google.com/p/powerman/
 Source0:	https://github.com/chaos/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
 Patch0:		powerman-2.3.26-var_run-to-run.patch
 
