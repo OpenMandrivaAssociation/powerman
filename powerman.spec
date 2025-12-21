@@ -12,6 +12,11 @@ Url:		https://code.google.com/p/powerman/
 Source0:	https://github.com/chaos/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
 Patch0:		powerman-2.3.26-var_run-to-run.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:  git
 BuildRequires:	bison
 BuildRequires:	flex
